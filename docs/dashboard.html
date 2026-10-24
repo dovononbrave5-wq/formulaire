@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de bord</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Mon application</h1>
+    <button id="logout-btn" type="button">Se déconnecter</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Bienvenue 👋</h2>
+      <p id="welcome">Chargement…</p>
+    </section>
+
+    <section class="card">
+      <h2>Mon compte</h2>
+      <dl>
+        <dt>Identifiant</dt>
+        <dd id="user-id">…</dd>
+        <dt>E-mail</dt>
+        <dd id="user-email">…</dd>
+      </dl>
+    </section>
+  </main>
+
+  <!-- Le JS est dans un fichier externe, voir la remarque sur helmet plus bas -->
+  <!-- <script>
+        async function loadUser() {
+        try {
+            const res = await fetch('/api/me');
+            // Session expirée : retour à la connexion
+            if (res.status === 401) {
+            window.location.href = '/login';
+            return;
+            }
+            const user = await res.json();
+            document.getElementById('welcome').textContent = `Connecté en tant que ${user.email}`;
+            document.getElementById('user-id').textContent = user.id;
+            document.getElementById('user-email').textContent = user.email;
+        } catch (err) {
+            document.getElementById('welcome').textContent = 'Impossible de charger vos informations.';
+        }
+        }
+        async function logout() {
+        try {
+            const res = await fetch('/auth/logout', { method: 'POST' });
+            const data = await res.json();
+            window.location.href = data.redirect || '/login';
+        } catch (err) {
+            alert('La déconnexion a échoué, réessayez.');
+        }
+        }
+        document.getElementById('logout-btn').addEventListener('click', logout);
+        loadUser();
+  </script> -->
+</body>
+</html>
